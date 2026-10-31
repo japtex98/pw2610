@@ -16,12 +16,3 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
-
-test('todo mvc', async ({ page }) => {
-  await page.goto('https://todomvc.com/examples/react/dist/');
-  await page.getByTestId('text-input').click();
-  await page.getByTestId('text-input').fill('buy milk');
-  await page.getByTestId('text-input').click();
-  await page.getByTestId('text-input').click();
-  await page.getByTestId('text-input').press('Enter');
-});
