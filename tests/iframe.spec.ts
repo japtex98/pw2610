@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-const iframePage = "https://the-internet.herokuapp.com/nested_frames";
+const nestedFramePage = "https://the-internet.herokuapp.com/nested_frames";
 
 test("Verify iframe content", async ({ page }) => {
-  await page.goto(iframePage);
+  await page.goto(nestedFramePage);
   const topFrame = page.frameLocator('frame[name="frame-top"]');
   const leftFrame = topFrame.frameLocator('frame[name="frame-left"]');
   const middleFrame = topFrame.frameLocator('frame[name="frame-middle"]');
@@ -29,4 +29,14 @@ test("Verify iframe content", async ({ page }) => {
     const bottomContent = await bottomFrame.locator("body").textContent();
     expect(bottomContent?.trim()).toBe("BOTTOM");
   });
+});
+
+const tinyMCEFramePage = "https://the-internet.herokuapp.com/iframe";
+
+test("Verify TinyMCE editor content", async ({ page }) => {
+  await page.goto(tinyMCEFramePage);
+  const editorFrame = page.frameLocator("#mce_0_ifr");
+  const bodyLocator = editorFrame.locator("body");
+
+  expect(await bodyLocator.textContent()).toBe("Your content goes here.");
 });
