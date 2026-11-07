@@ -14,7 +14,7 @@ test("login success with valid credentials", async ({ page }) => {
   ).toBeVisible();
 });
 
-//Parameterized Test
+//Parameterized Test/Data Driven Test
 [
   {
     username: "aaaaaaaa",

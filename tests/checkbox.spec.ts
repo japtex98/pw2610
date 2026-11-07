@@ -4,7 +4,6 @@ const checkboxPage = "https://the-internet.herokuapp.com/checkboxes";
 
 test("check success", async ({ page }) => {
   await page.goto(checkboxPage);
-  // Select by the text immediately following it
   await page.locator('#checkboxes input[type="checkbox"]').first().check();
   await expect(
     page.locator('#checkboxes input[type="checkbox"]').first(),
@@ -18,7 +17,6 @@ test("check success", async ({ page }) => {
 
 test("uncheck success", async ({ page }) => {
   await page.goto(checkboxPage);
-  // Select by the text immediately following it
   await page.locator('#checkboxes input[type="checkbox"]').first().uncheck();
   await expect(
     page.locator('#checkboxes input[type="checkbox"]').first(),
